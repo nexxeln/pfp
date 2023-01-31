@@ -181,7 +181,3 @@ export const pipe: Pipe = (
 ): unknown => {
   return fns.reduce((acc, fn) => fn(acc), value);
 };
-
-export const functions = {
-  pipe,
-};
