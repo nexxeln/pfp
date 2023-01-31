@@ -127,3 +127,47 @@ Deno.test("Enum.uniqBy", () => {
     "removes the elements for which fun(element) returned duplicate elements"
   );
 });
+
+Deno.test("Enum.map()", () => {
+  assertEquals(
+    Enum.map([1, 2, 3], (x) => x + 1),
+    [2, 3, 4],
+    "returns a new array with the result of applying fun(element) to each element"
+  );
+
+  assertEquals(
+    Enum.map(["a", "b", "c"], (x) => x.toUpperCase()),
+    ["A", "B", "C"],
+    "returns a new array with the result of applying fun(element) to each element"
+  );
+
+  assertEquals(
+    Enum.map(
+      [
+        [1, 2],
+        [3, 4],
+        [5, 6],
+      ],
+      (x) => x[0]
+    ),
+    [1, 3, 5],
+    "returns a new array by using Enum.map on a nested array"
+  );
+
+  assertEquals(
+    Enum.map(
+      [
+        [1, 2],
+        [3, 4],
+        [5, 6],
+      ],
+      (x) => Enum.map(x, (y) => y + 1)
+    ),
+    [
+      [2, 3],
+      [4, 5],
+      [6, 7],
+    ],
+    "returns a new array by using nested Enum.map"
+  );
+});
