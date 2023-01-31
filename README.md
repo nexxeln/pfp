@@ -1,0 +1,1 @@
+functional programming helpers. mostly for personal use right now.
