@@ -12,9 +12,12 @@ const min = (enumerable: number[]): number => Math.min(...enumerable);
 
 const max = (enumerable: number[]): number => Math.max(...enumerable);
 
+const uniq = <T>(enumerable: T[]): T[] => [...new Set(enumerable)];
+
 export const Enum = {
   all,
   any,
   min,
   max,
+  uniq,
 };

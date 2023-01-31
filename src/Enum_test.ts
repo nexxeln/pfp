@@ -111,3 +111,11 @@ Deno.test("Enum.max()", () => {
     "returns the largest number in enumerable"
   );
 });
+
+Deno.test("Enum.uniq()", () => {
+  assertEquals(
+    Enum.uniq([1, 2, 3, 1, 2, 3]),
+    [1, 2, 3],
+    "removes all duplicated elements"
+  );
+});
