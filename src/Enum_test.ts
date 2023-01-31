@@ -171,3 +171,17 @@ Deno.test("Enum.map()", () => {
     "returns a new array by using nested Enum.map"
   );
 });
+
+Deno.test("Enum.at()", () => {
+  assertEquals(
+    Enum.at([1, 2, 3], 1),
+    2,
+    "returns the element at the given index"
+  );
+
+  assertEquals(
+    Enum.at([1, 2, 3], 3),
+    undefined,
+    "returns undefined if the index is out of range"
+  );
+});

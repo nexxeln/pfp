@@ -8,6 +8,9 @@ const any = <T>(enumerable: T[], fun?: (element: T) => unknown): boolean =>
     ? enumerable.some((element) => Boolean(fun(element)))
     : enumerable.some((element) => Boolean(element));
 
+const at = <T>(enumerable: T[], index: number): T | undefined =>
+  enumerable[index];
+
 const map = <T, U>(
   enumerable: T[],
   fun: (element: T, index: number, enumerable: T[]) => U
@@ -35,6 +38,7 @@ const uniqBy = <T, K>(enumerable: T[], fun: (element: T) => K): T[] => [
 export const Enum = {
   all,
   any,
+  at,
   map,
   max,
   min,
