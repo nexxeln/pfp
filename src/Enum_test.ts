@@ -5,7 +5,6 @@ import { Enum } from "./Enum.ts";
 // if you have any suggestions on how to improve them, please let me know or open a pull request!
 
 Deno.test("Enum.all()", () => {
-  // returns true if all elements in enumerable are truthy
   assertEquals(
     Enum.all([1, 2, 3]),
     true,
@@ -17,7 +16,6 @@ Deno.test("Enum.all()", () => {
     "returns true if all elements in enumerable are truthy"
   );
 
-  // returns false if any element in enumerable is falsy
   assertEquals(
     Enum.all([1, 2, 0]),
     false,
@@ -29,7 +27,6 @@ Deno.test("Enum.all()", () => {
     "returns false if any element in enumerable is falsy"
   );
 
-  // returns true if fun(element) is truthy for all elements in enumerable
   assertEquals(
     Enum.all([1, 2, 3], (x) => x > 0),
     true,
@@ -41,7 +38,6 @@ Deno.test("Enum.all()", () => {
     "returns true if fun(element) is truthy for all elements in enumerable"
   );
 
-  // returns false if fun(element) is falsy for any element in enumerable
   assertEquals(
     Enum.all([1, 2, 3], (x) => x < 1),
     false,
