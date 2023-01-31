@@ -119,3 +119,11 @@ Deno.test("Enum.uniq()", () => {
     "removes all duplicated elements"
   );
 });
+
+Deno.test("Enum.uniqBy", () => {
+  assertEquals(
+    Enum.uniqBy([1, 2, 3, 1, 2, 3], (x) => x + 1),
+    [1, 2, 3],
+    "removes the elements for which fun(element) returned duplicate elements"
+  );
+});

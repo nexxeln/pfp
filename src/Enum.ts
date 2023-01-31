@@ -14,10 +14,21 @@ const max = (enumerable: number[]): number => Math.max(...enumerable);
 
 const uniq = <T>(enumerable: T[]): T[] => [...new Set(enumerable)];
 
+const uniqBy = <T, K>(enumerable: T[], fun: (element: T) => K): T[] => [
+  ...enumerable
+    .reduce((map, element) => {
+      const key = fun(element);
+      if (!map.has(key)) map.set(key, element);
+      return map;
+    }, new Map<K, T>())
+    .values(),
+];
+
 export const Enum = {
   all,
   any,
-  min,
   max,
+  min,
   uniq,
+  uniqBy,
 };
