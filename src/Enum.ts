@@ -8,14 +8,13 @@ const any = <T>(enumerable: T[], fun?: (element: T) => unknown): boolean =>
     ? enumerable.some((element) => Boolean(fun(element)))
     : enumerable.some((element) => Boolean(element));
 
-function map<T, U>(
+const map = <T, U>(
   enumerable: T[],
   fun: (element: T, index: number, enumerable: T[]) => U
-): U[] {
-  return Array.from({ length: enumerable.length }, (_, index) =>
+): U[] =>
+  Array.from({ length: enumerable.length }, (_, index) =>
     fun(enumerable[index], index, enumerable)
   );
-}
 
 const max = (enumerable: number[]): number => Math.max(...enumerable);
 
