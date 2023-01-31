@@ -11,6 +11,12 @@ const any = <T>(enumerable: T[], fun?: (element: T) => unknown): boolean =>
 const at = <T>(enumerable: T[], index: number): T | undefined =>
   enumerable[index];
 
+const concat = <T>(enumerable: T[], ...enumerables: T[][]): T[] =>
+  enumerables.reduce(
+    (enumerable, enumerables) => [...enumerable, ...enumerables],
+    enumerable
+  );
+
 const map = <T, U>(
   enumerable: T[],
   fun: (element: T, index: number, enumerable: T[]) => U
@@ -39,6 +45,7 @@ export const Enum = {
   all,
   any,
   at,
+  concat,
   map,
   max,
   min,

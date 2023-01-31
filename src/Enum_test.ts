@@ -185,3 +185,17 @@ Deno.test("Enum.at()", () => {
     "returns undefined if the index is out of range"
   );
 });
+
+Deno.test("Enum.concat()", () => {
+  assertEquals(
+    Enum.concat([1, 2, 3], [4, 5, 6]),
+    [1, 2, 3, 4, 5, 6],
+    "returns a new array with the elements of the first array followed by the elements of the second array"
+  );
+
+  assertEquals(
+    Enum.concat([1, 2, 3], [4, 5, 6], [7, 8, 9]),
+    [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "returns a new array with the elements of the first array followed by the elements of the second and third array"
+  );
+});
