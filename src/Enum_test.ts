@@ -95,3 +95,19 @@ Deno.test("Enum.any()", () => {
     "returns false if fun(element) is falsy for all elements in enumerable"
   );
 });
+
+Deno.test("Enum.min()", () => {
+  assertEquals(
+    Enum.min([-9, -2, 9, 4, 2, 7, -7, 1, 8, 10]),
+    -9,
+    "returns the smallest number in enumerable"
+  );
+});
+
+Deno.test("Enum.max()", () => {
+  assertEquals(
+    Enum.max([-9, -2, 9, 4, 2, 7, -7, 1, 8, 10]),
+    10,
+    "returns the largest number in enumerable"
+  );
+});

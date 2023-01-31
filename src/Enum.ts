@@ -8,7 +8,13 @@ const any = <T>(enumerable: T[], fun?: (element: T) => unknown): boolean =>
     ? enumerable.some((element) => Boolean(fun(element)))
     : enumerable.some((element) => Boolean(element));
 
+const min = (enumerable: number[]): number => Math.min(...enumerable);
+
+const max = (enumerable: number[]): number => Math.max(...enumerable);
+
 export const Enum = {
   all,
   any,
+  min,
+  max,
 };
