@@ -17,6 +17,16 @@ const concat = <T>(enumerable: T[], ...enumerables: T[][]): T[] =>
     enumerable
   );
 
+const filter = <T>(
+  enumerable: T[],
+  fun: (element: T, index: number, enumerable: T[]) => boolean
+): T[] =>
+  enumerable.reduce(
+    (filtered, element, index) =>
+      fun(element, index, enumerable) ? [...filtered, element] : filtered,
+    [] as T[]
+  );
+
 const map = <T, U>(
   enumerable: T[],
   fun: (element: T, index: number, enumerable: T[]) => U
@@ -46,6 +56,7 @@ export const Enum = {
   any,
   at,
   concat,
+  filter,
   map,
   max,
   min,
