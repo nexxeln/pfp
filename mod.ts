@@ -1,2 +1,1 @@
-export * from "./src/Functions.ts";
-export { Enum } from "./src/Enum.ts";
+export { List } from "./src/list.ts";
