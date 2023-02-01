@@ -15,3 +15,5 @@ export class List<T> {
     );
   };
 }
+
+export const list = <T>(array: T[]): List<T> => new List(array);
