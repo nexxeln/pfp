@@ -2,18 +2,11 @@
 // this is a playground file for testing out the library for now
 import { List, list } from "./list.ts";
 
-const l = list([1, 2, 3, 4, 5]);
+const listt = [3, 5, 2, 1, 4];
+const l = list(listt);
 
-const hi = l
-  .map((item) => item * 2)
-  .concat(l)
-  .length();
+const hi = l.sort((a, b) => a - b).reduceRight((a, b) => a + b, 0);
 
 console.log(hi);
 
-const hii = [1, 2, 3, 4, 5].every((item) => item > 0);
-
-console.log(hii);
-
-const hiii = [1, 2, 3, 4, 5].keys().next().value;
-console.log(hiii);
+console.log([3, 5, 2, 1, 4].sort((a, b) => a - b));
