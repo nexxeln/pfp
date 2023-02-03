@@ -83,6 +83,18 @@ export class List<T> {
   forEach = (callback: (item: T, index: number) => void): void =>
     this._array.forEach(callback);
 
+  // Returns a map with keys as unique elements of enumerable and values as the count of every element.
+  frequencies = (): Map<T, number> =>
+    this._array.reduce((acc, item) => {
+      if (acc.has(item)) {
+        acc.set(item, acc.get(item)! + 1);
+      } else {
+        acc.set(item, 1);
+      }
+
+      return acc;
+    }, new Map<T, number>());
+
   includes = (item: T): boolean => this._array.includes(item);
 
   indexOf = (item: T): number => this._array.indexOf(item);
