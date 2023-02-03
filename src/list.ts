@@ -25,6 +25,17 @@ export class List<T> {
   concat = (list: List<T>): List<T> =>
     new List(this._array.concat(list._array));
 
+  dedup = (): List<T> =>
+    new List(
+      this._array.reduce((acc, item) => {
+        if (acc.length === 0 || acc[acc.length - 1] !== item) {
+          acc.push(item);
+        }
+
+        return acc;
+      }, [] as T[])
+    );
+
   every = (callback: (item: T, index: number) => boolean): boolean =>
     this._array.every(callback);
 

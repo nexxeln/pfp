@@ -2,9 +2,9 @@
 // this is a playground file for testing out the library for now
 import { List, list } from "./list.ts";
 
-const listt = [3, 5, 2, 1, 4];
+const listt = [1, 2, 3, "hi", 4, 5, 5, 6.0, "hi", "hi"];
 const l = list(listt);
 
-const hi = l.sort((a, b) => a - b).count();
+const hi = l.uniq().toArray();
 
 console.log(hi);
