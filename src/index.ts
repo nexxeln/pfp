@@ -5,4 +5,4 @@ import { List, list } from "./list.ts";
 const listt = [1, 2, 3];
 const l = list(listt);
 
-console.log(l.mapJoin(", ", (x) => x * 2));
+console.log(l.product());

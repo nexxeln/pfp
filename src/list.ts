@@ -147,6 +147,9 @@ export class List<T> {
 
   pop = (): T | undefined => this._array.pop();
 
+  product = (): number =>
+    this._array.reduce((acc, item) => acc * Number(item), 1);
+
   push = (...items: T[]): number => this._array.push(...items);
 
   reduce = <U>(
