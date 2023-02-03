@@ -72,6 +72,10 @@ export class List<T> {
     initialValue: U
   ): U => this._array.reduceRight(callback, initialValue);
 
+  // implement the reject function from elixir
+  reject = (callback: (item: T, index: number) => boolean): List<T> =>
+    new List(this._array.filter((item, index) => !callback(item, index)));
+
   reverse = (): List<T> => new List(this._array.reverse());
 
   shift = (): T | undefined => this._array.shift();
