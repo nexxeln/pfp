@@ -121,6 +121,22 @@ export class List<T> {
   map = <U>(callback: (item: T, index: number) => U): List<U> =>
     new List(this._array.map(callback));
 
+  mapIntersperse = <U>(
+    separator: U,
+    callback: (item: T, index: number) => U
+  ): List<U> =>
+    new List(
+      this._array.reduce((acc, item, index) => {
+        if (index !== 0) {
+          acc.push(separator);
+        }
+
+        acc.push(callback(item, index));
+
+        return acc;
+      }, [] as U[])
+    );
+
   max = (): T | undefined => this._array.reduce((a, b) => (a > b ? a : b));
 
   min = (): T | undefined => this._array.reduce((a, b) => (a < b ? a : b));
