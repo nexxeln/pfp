@@ -17,6 +17,11 @@ export class List<T> {
 
   at = (index: number): T => this._array[index];
 
+  count = (callback?: (item: T) => unknown): number =>
+    callback
+      ? this._array.filter((item) => Boolean(callback(item))).length
+      : this._array.length;
+
   concat = (list: List<T>): List<T> =>
     new List(this._array.concat(list._array));
 
