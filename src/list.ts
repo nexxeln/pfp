@@ -36,6 +36,19 @@ export class List<T> {
       }, [] as T[])
     );
 
+  dedupBy = <U>(callback: (item: T) => U): List<T> =>
+    new List(
+      this._array.reduce((acc, item) => {
+        const key = callback(item);
+
+        if (acc.length === 0 || callback(acc[acc.length - 1]) !== key) {
+          acc.push(item);
+        }
+
+        return acc;
+      }, [] as T[])
+    );
+
   every = (callback: (item: T, index: number) => boolean): boolean =>
     this._array.every(callback);
 

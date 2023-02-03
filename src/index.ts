@@ -2,9 +2,9 @@
 // this is a playground file for testing out the library for now
 import { List, list } from "./list.ts";
 
-const listt = [1, 2, 3, "hi", 4, 5, 5, 6.0, "hi", "hi"];
+const listt = [5, 1, 2, 3, 2, 1];
 const l = list(listt);
 
-const hi = l.uniq().toArray();
+const hi = l.uniqBy((x) => x > 2).toArray();
 
 console.log(hi);
