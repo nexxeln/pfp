@@ -152,6 +152,9 @@ export class List<T> {
 
   push = (...items: T[]): number => this._array.push(...items);
 
+  random = (): T | undefined =>
+    this._array[Math.floor(Math.random() * this._array.length)];
+
   reduce = <U>(
     callback: (accumulator: U, item: T, index: number) => U,
     initialValue: U

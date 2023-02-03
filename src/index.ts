@@ -3,6 +3,6 @@
 import { List, list } from "./list.ts";
 
 const listt = [1, 2, 3];
-const l = list(listt);
+const l = list(listt).random();
 
-console.log(l.product());
+console.log(l);
