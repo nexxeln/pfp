@@ -54,6 +54,10 @@ export class List<T> {
   map = <U>(callback: (item: T, index: number) => U): List<U> =>
     new List(this._array.map(callback));
 
+  max = (): T | undefined => this._array.reduce((a, b) => (a > b ? a : b));
+
+  min = (): T | undefined => this._array.reduce((a, b) => (a < b ? a : b));
+
   pop = (): T | undefined => this._array.pop();
 
   push = (...items: T[]): number => this._array.push(...items);
