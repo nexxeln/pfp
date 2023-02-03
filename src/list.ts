@@ -94,6 +94,21 @@ export class List<T> {
 
   toString = (): string => this._array.toString();
 
+  uniq = (): List<T> => new List([...new Set(this._array)]);
+
+  uniqBy = <U>(callback: (item: T) => U): List<T> =>
+    new List([
+      ...this._array
+        .reduce((map, item) => {
+          const key = callback(item);
+
+          if (!map.has(key)) map.set(key, item);
+
+          return map;
+        }, new Map<U, T>())
+        .values(),
+    ]);
+
   unshift = (...items: T[]): number => this._array.unshift(...items);
 }
 
