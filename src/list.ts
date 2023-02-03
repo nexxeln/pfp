@@ -83,7 +83,6 @@ export class List<T> {
   forEach = (callback: (item: T, index: number) => void): void =>
     this._array.forEach(callback);
 
-  // Returns a map with keys as unique elements of enumerable and values as the count of every element.
   frequencies = (): Map<T, number> =>
     this._array.reduce((acc, item) => {
       if (acc.has(item)) {
@@ -136,6 +135,11 @@ export class List<T> {
         return acc;
       }, [] as U[])
     );
+
+  mapJoin = <U>(
+    separator: string,
+    callback: (item: T, index: number) => U
+  ): string => this._array.map(callback).join(separator);
 
   max = (): T | undefined => this._array.reduce((a, b) => (a > b ? a : b));
 
