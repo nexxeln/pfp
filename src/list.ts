@@ -49,6 +49,11 @@ export class List<T> {
       }, [] as T[])
     );
 
+  drop = (amount: number): List<T> =>
+    amount < 0
+      ? new List(this._array.slice(0, this._array.length + amount))
+      : new List(this._array.slice(amount));
+
   every = (callback: (item: T, index: number) => boolean): boolean =>
     this._array.every(callback);
 
