@@ -54,6 +54,11 @@ export class List<T> {
       ? new List(this._array.slice(0, this._array.length + amount))
       : new List(this._array.slice(amount));
 
+  dropWhile = (callback: (item: T) => unknown): List<T> =>
+    new List(
+      this._array.slice(this._array.findIndex((item) => !callback(item)))
+    );
+
   every = (callback: (item: T, index: number) => boolean): boolean =>
     this._array.every(callback);
 
