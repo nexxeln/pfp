@@ -99,6 +99,19 @@ export class List<T> {
 
   indexOf = (item: T): number => this._array.indexOf(item);
 
+  intersperse = (separator: T): List<T> =>
+    new List(
+      this._array.reduce((acc, item, index) => {
+        if (index !== 0) {
+          acc.push(separator);
+        }
+
+        acc.push(item);
+
+        return acc;
+      }, [] as T[])
+    );
+
   join = (separator?: string): string => this._array.join(separator);
 
   lastIndexOf = (item: T): number => this._array.lastIndexOf(item);
