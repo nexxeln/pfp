@@ -6,8 +6,14 @@ const l = list([1, 2, 3, 4, 5]);
 
 const hi = l
   .map((item) => item * 2)
-  .map((item) => item + 1)
-  .concat(list([6, 7, 8, 9, 10]))
-  .at(9);
+  .concat(l)
+  .length();
 
 console.log(hi);
+
+const hii = [1, 2, 3, 4, 5].every((item) => item > 0);
+
+console.log(hii);
+
+const hiii = [1, 2, 3, 4, 5].keys().next().value;
+console.log(hiii);

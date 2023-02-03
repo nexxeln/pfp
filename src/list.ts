@@ -13,6 +13,8 @@ export class List<T> {
   every = (callback: (item: T, index: number) => boolean): boolean =>
     this._array.every(callback);
 
+  length = (): number => this._array.length;
+
   map = <U>(callback: (item: T, index: number) => U): List<U> => {
     return new List(
       Array.from({ length: this._array.length }, (_, index) =>
