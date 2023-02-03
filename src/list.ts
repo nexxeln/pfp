@@ -5,6 +5,16 @@ export class List<T> {
     this._array = array;
   }
 
+  all = (callback?: (item: T) => unknown): boolean =>
+    callback
+      ? this._array.every((item) => Boolean(callback(item)))
+      : this._array.every((item) => Boolean(item));
+
+  any = (callback?: (item: T) => unknown): boolean =>
+    callback
+      ? this._array.some((item) => Boolean(callback(item)))
+      : this._array.some((item) => Boolean(item));
+
   at = (index: number): T => this._array[index];
 
   concat = (list: List<T>): List<T> =>
