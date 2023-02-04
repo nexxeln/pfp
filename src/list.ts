@@ -204,6 +204,19 @@ export class List<T> {
   splice = (start: number, deleteCount?: number): List<T> =>
     new List(this._array.splice(start, deleteCount));
 
+  take = (amount: number): List<T> => new List(this._array.slice(0, amount));
+
+  takeEvery = (amount: number): List<T> =>
+    new List(
+      this._array.reduce((acc, item, index) => {
+        if (index % amount === 0) {
+          acc.push(item);
+        }
+
+        return acc;
+      }, [] as T[])
+    );
+
   toArray = (): T[] => this._array;
 
   toLocaleString = (): string => this._array.toLocaleString();
