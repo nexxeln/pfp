@@ -217,6 +217,15 @@ export class List<T> {
       }, [] as T[])
     );
 
+  takeWhile = (callback: (item: T, index: number) => boolean): List<T> =>
+    new List(
+      this._array.reduce((acc, item, index) => {
+        if (callback(item, index)) acc.push(item);
+
+        return acc;
+      }, [] as T[])
+    );
+
   toArray = (): T[] => this._array;
 
   toLocaleString = (): string => this._array.toLocaleString();
