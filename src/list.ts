@@ -17,6 +17,25 @@ export class List<T> {
 
   at = (index: number): T => this._array[index];
 
+  chunkBy = (callback: (item: T) => unknown): List<List<T>> =>
+    new List(
+      this._array
+        .reduce((chunks, item) => {
+          const value = callback(item);
+          const lastChunk = chunks[chunks.length - 1];
+          const lastValue = lastChunk && lastChunk[0] && callback(lastChunk[0]);
+
+          if (value !== lastValue) {
+            chunks.push([item]);
+          } else {
+            lastChunk.push(item);
+          }
+
+          return chunks;
+        }, [] as T[][])
+        .map((chunk) => new List(chunk))
+    );
+
   count = (callback?: (item: T) => unknown): number =>
     callback
       ? this._array.filter((item) => Boolean(callback(item))).length
